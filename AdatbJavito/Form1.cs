@@ -137,6 +137,10 @@ namespace AdatbJavito
                 jegy++;
             if (sum < imschatar)
                 imsc = 0;
+            else
+            {
+                imsc = Math.Min((sum - 5.5) / 6.5 * 100, 5);
+            }
 
             string minta =
 @$"Neptun:{neptun.Text}
