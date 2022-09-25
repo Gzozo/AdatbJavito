@@ -161,6 +161,15 @@ A labordokumentációra {jegyek[jegy - 1]}({jegy}) jegyet adok.
             Clipboard.SetText(minta);
         }
 
+        private void clearBtn_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you wish to clear all input fields?", "Clear", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                ucs.ForEach(x => x.Clear());
+                neptun.Clear();
+            }
+        }
+
         private void changePatternToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Not implemented");

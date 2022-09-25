@@ -50,6 +50,8 @@
             this.points.Name = "points";
             this.points.Size = new System.Drawing.Size(48, 23);
             this.points.TabIndex = 1;
+            this.points.Tag = "";
+            this.points.DoubleClick += new System.EventHandler(this.Textbox_DoubleClick);
             // 
             // plusz
             // 
@@ -57,6 +59,8 @@
             this.plusz.Name = "plusz";
             this.plusz.Size = new System.Drawing.Size(48, 23);
             this.plusz.TabIndex = 1;
+            this.plusz.Tag = "";
+            this.plusz.DoubleClick += new System.EventHandler(this.Textbox_DoubleClick);
             // 
             // imsc
             // 
@@ -64,6 +68,8 @@
             this.imsc.Name = "imsc";
             this.imsc.Size = new System.Drawing.Size(48, 23);
             this.imsc.TabIndex = 1;
+            this.imsc.Tag = "";
+            this.imsc.DoubleClick += new System.EventHandler(this.Textbox_DoubleClick);
             // 
             // check
             // 

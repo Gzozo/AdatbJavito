@@ -60,6 +60,9 @@ namespace AdatbJavito
         {
             feladat = f;
             this.sorszam.Text = sorszam + ".feladat";
+            points.Tag = f.maxPoint;
+            plusz.Tag = f.plusz;
+            imsc.Tag = f.imsc;
             InitFeladat();
         }
 
@@ -71,6 +74,21 @@ namespace AdatbJavito
                 plusz.Text = feladat.plusz + "";
                 imsc.Text = feladat.imsc + "";
             }
+        }
+        public void Clear()
+        {
+            points.Clear();
+            plusz.Clear();
+            imsc.Clear();
+            check.Checked = false;
+        }
+
+        private void Textbox_DoubleClick(object sender, EventArgs e)
+        {
+            if (sender is not TextBox)
+                return;
+            TextBox text = (TextBox)sender;
+            text.Text = text.Tag.ToString();
         }
     }
 
