@@ -144,14 +144,15 @@ namespace AdatbJavito
 
             string minta =
 @$"Neptun:{neptun.Text}
-1. {pontok[0]} / 0,5p
-2. {pontok[1]} / 1p és 0,5 plusz pont
-3. {pontok[2]} / 1p
-4. {pontok[3]} / 1 + (i)1p
-5. {pontok[4]} / 1,5p és 1 plusz pont
-6. {pontok[5]} / 0,5p
 
-Összesen: {sum}p, egy tizedes jegyre kerekítve
+1. {pontok[0]} / 0,5p  {ucs[0].Comment}
+2. {pontok[1]} / 1p és 0,5 plusz pont   {ucs[1].Comment}
+3. {pontok[2]} / 1p   {ucs[2].Comment}
+4. {pontok[3]} / 1 + (i)1p   {ucs[3].Comment}
+5. {pontok[4]} / 1,5p és 1 plusz pont   {ucs[4].Comment}
+6. {pontok[5]} / 0,5p   {ucs[5].Comment}
+
+Összesen: {sum}p
 iMSc pont: {imsc}p
 Az iMSc pontokra jogosultság határa: 5,5p az(i) (rész)feladatokon elért pontszám nélkül.
 A labordokumentációra {jegyek[jegy - 1]}({jegy}) jegyet adok.

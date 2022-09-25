@@ -87,7 +87,7 @@
             this.points.Controls.Add(this.testfeladatuc);
             this.points.Location = new System.Drawing.Point(36, 108);
             this.points.Name = "points";
-            this.points.Size = new System.Drawing.Size(553, 241);
+            this.points.Size = new System.Drawing.Size(592, 241);
             this.points.TabIndex = 3;
             // 
             // testfeladatuc

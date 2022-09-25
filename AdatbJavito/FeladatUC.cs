@@ -38,6 +38,8 @@ namespace AdatbJavito
             }
         }
 
+        public string Comment { get => comment.Text; }
+
         public FeladatUC()
         {
             InitializeComponent();
@@ -80,6 +82,7 @@ namespace AdatbJavito
             points.Clear();
             plusz.Clear();
             imsc.Clear();
+            comment.Clear();
             check.Checked = false;
         }
 
@@ -89,6 +92,7 @@ namespace AdatbJavito
                 return;
             TextBox text = (TextBox)sender;
             text.Text = text.Tag.ToString();
+            check.Checked = Points == feladat.maxPoint && Plusz == feladat.plusz && Imsc == feladat.imsc;
         }
     }
 
