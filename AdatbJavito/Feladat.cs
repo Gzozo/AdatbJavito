@@ -23,9 +23,9 @@ namespace AdatbJavito
 
         public double[] jegyhatar = new double[4]
         {
-            3.01,4,5,6
+            5.01,7,8,9
         };
-        public double imschatar = 5.5;
+        public double imschatar = 10;
 
         public int Length => feladatok.Length;
 
