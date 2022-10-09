@@ -33,7 +33,7 @@ bld/
 [Ll]og/
 [Ll]ogs/
 
-!AdatbJavito.dll
+!AdatbJavito/bin/Debug/AdatbJavito.dll
 !AdatbJavito.exe
 !AdatbJavito.runtimeconfig.json
 
