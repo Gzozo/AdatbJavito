@@ -1,0 +1,10 @@
+Neptun: [neptun]
+
+[points]
+
+Összesen: [sum]p
+iMSc pont: [imsc]p
+Az iMSc pontokra jogosultság határa: [min_imsc]p az(i) (rész)feladatokon elért pontszám nélkül.
+A labordokumentációra [grade] jegyet adok.
+--
+[grade_point]

@@ -54,7 +54,9 @@ namespace AdatbJavito
         }
         public void Load()
         {
-            feladatok = (_Feladat[])JsonSerializer.Deserialize(File.OpenRead("feladat.json"), typeof(_Feladat[]));
+            StreamReader sr = new StreamReader("feladat.json");
+            feladatok = (_Feladat[])JsonSerializer.Deserialize(sr.BaseStream, typeof(_Feladat[]));
+            sr.Close();
         }
         public void Resize(int length)
         {

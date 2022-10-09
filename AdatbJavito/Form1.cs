@@ -152,7 +152,7 @@ namespace AdatbJavito
                 jegy++;
             if (sum < feladat.imschatar)
                 imsc = 0;
-            else
+            else if (imsc > 0)
             {
                 imsc = Math.Min((sum - 5.5) / 6.5 * 100, 5);
             }
