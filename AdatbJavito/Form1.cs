@@ -1,25 +1,19 @@
+using System.Text;
+using System.Text.Json;
+using System.Xml.Serialization;
+
 namespace AdatbJavito
 {
     public partial class Form1 : Form
     {
-        public record Feladat(double maxPoint, double imsc, double plusz) { }
         public record FeladatUI(Label Label, TextBox Max, TextBox Imsc, TextBox Plusz, CheckBox Checkbox) { }
 
-        Feladat[] feladatok = new Feladat[]
-        {
-            new Feladat(0.5,0,0),
-            new Feladat(1,0,0.5),
-            new Feladat(1,0,0),
-            new Feladat(1,1,0),
-            new Feladat(1.5,0,1),
-            new Feladat(0.5,0,0),
-        };
+        #region Feladat stats
 
-        double[] jegyhatar = new double[4]
-        {
-            3.01,4,5,6
-        };
-        double imschatar = 5.5;
+        Feladat feladat = new Feladat();
+
+        #endregion
+
         string[] jegyek = "elégtelen elégséges közepes jó jeles".Split(' ');
 
         // List<FeladatUI> uis = new List<FeladatUI>();
@@ -28,7 +22,34 @@ namespace AdatbJavito
         {
             InitializeComponent();
 
-            for (int i = 0; i < feladatok.Length; i++)
+            if (!File.Exists("minta.txt"))
+                CreateMinta();
+
+
+            /*if (!File.Exists("feladat.xml"))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(Feladat[]));
+                using (FileStream fs = new FileStream("feladat.xml", FileMode.Create))
+                {
+                    JsonSerializer.Serialize(feladatok);
+                    serializer.Serialize(fs, feladatok);
+                }
+            }*/
+
+            GenerateUCs();
+            /*testTextbox.Visible = false;
+            testTextbox2.Visible = false;
+            testTextbox3.Visible = false;
+            testCheckbox.Visible = false;
+            testLabel.Visible = false;*/
+            testfeladatuc.Visible = false;
+        }
+
+        private void GenerateUCs()
+        {
+            ucs.ForEach(x => points.Controls.Remove(x));
+            ucs.Clear();
+            for (int i = 0; i < feladat.Length; i++)
             {
                 /*CheckBox checkBox = new CheckBox();
                 TextBox textBox = new TextBox();
@@ -64,18 +85,12 @@ namespace AdatbJavito
                 uis.Add(new FeladatUI(label, textBox, textBox2, textBox3, checkBox));*/
 
                 FeladatUC uc = new FeladatUC();
-                uc.SetFeladat(feladatok[i], i + 1);
-                uc.Location = new Point(testfeladatuc.Location.X, testfeladatuc.Location.Y + i * 30);
+                uc.SetFeladat(feladat[i], i + 1);
+                uc.Location = new Point(testfeladatuc.Location.X, testfeladatuc.Location.Y + i * 40);
                 points.Controls.Add(uc);
                 ucs.Add(uc);
 
             }
-            /*testTextbox.Visible = false;
-            testTextbox2.Visible = false;
-            testTextbox3.Visible = false;
-            testCheckbox.Visible = false;
-            testLabel.Visible = false;*/
-            testfeladatuc.Visible = false;
         }
 
         private void CheckBox_CheckedChanged(object? sender, EventArgs e)
@@ -110,11 +125,11 @@ namespace AdatbJavito
                 2: 3<; 3: 4<=; 4: 5<=; 5: 6<=
               */
 
-            string[] pontok = new string[6];
+            string[] pontok = new string[feladat.Length];
             double sum = 0, imsc = 0;
             int jegy = 1;
 
-            for (int i = 0; i < feladatok.Length; i++)
+            for (int i = 0; i < feladat.Length; i++)
             {
                 double max, im, plusz;
                 /*max = Math.Min(double.TryParse(uis[i].Max.Text, out max) ? max : 0, feladatok[i].maxPoint);
@@ -128,38 +143,104 @@ namespace AdatbJavito
                 imsc += im;
 
                 pontok[i] = $"{max}p";
-                if (feladatok[i].plusz != 0)
+                if (feladat[i].plusz != 0)
                     pontok[i] += $" + {plusz}p";
-                if (feladatok[i].imsc != 0)
+                if (feladat[i].imsc != 0)
                     pontok[i] += $" + (i){im}p";
             }
-            while (jegy < 5 && jegyhatar[jegy - 1] <= sum)
+            while (jegy < 5 && feladat.jegyhatar[jegy - 1] <= sum)
                 jegy++;
-            if (sum < imschatar)
+            if (sum < feladat.imschatar)
                 imsc = 0;
             else
             {
                 imsc = Math.Min((sum - 5.5) / 6.5 * 100, 5);
             }
 
-            string minta =
-@$"Neptun:{neptun.Text}
+            if (!File.Exists("minta.txt"))
+            {
+                CreateMinta();
+            }
 
-1. {pontok[0]} / 0,5p  {ucs[0].Comment}
-2. {pontok[1]} / 1p és 0,5 plusz pont   {ucs[1].Comment}
-3. {pontok[2]} / 1p   {ucs[2].Comment}
-4. {pontok[3]} / 1 + (i)1p   {ucs[3].Comment}
-5. {pontok[4]} / 1,5p és 1 plusz pont   {ucs[4].Comment}
-6. {pontok[5]} / 0,5p   {ucs[5].Comment}
+            /* string minta =
+ @$"Neptun:{neptun.Text}
 
-Összesen: {sum}p
-iMSc pont: {imsc}p
-Az iMSc pontokra jogosultság határa: 5,5p az(i) (rész)feladatokon elért pontszám nélkül.
-A labordokumentációra {jegyek[jegy - 1]}({jegy}) jegyet adok.
---
-2: 3 <; 3: 4 <=; 4: 5 <=; 5: 6 <= ";
+ 1. {pontok[0]} / 0,5p  {ucs[0].Comment}
+ 2. {pontok[1]} / 1p és 0,5 plusz pont   {ucs[1].Comment}
+ 3. {pontok[2]} / 1p   {ucs[2].Comment}
+ 4. {pontok[3]} / 1 + (i)1p   {ucs[3].Comment}
+ 5. {pontok[4]} / 1,5p és 1 plusz pont   {ucs[4].Comment}
+ 6. {pontok[5]} / 0,5p   {ucs[5].Comment}
+
+ Összesen: {sum}p
+ iMSc pont: {imsc}p
+ Az iMSc pontokra jogosultság határa: 5,5p az(i) (rész)feladatokon elért pontszám nélkül.
+ A labordokumentációra {jegyek[jegy - 1]}({jegy}) jegyet adok.
+ --
+ 2: 3 <; 3: 4 <=; 4: 5 <=; 5: 6 <= ";*/
+            StreamReader sr = new StreamReader("minta.txt");
+            string minta = sr.ReadToEnd();
+
+            Dictionary<string, Func<string>> mask = new Dictionary<string, Func<string>>()
+            {
+                {"[neptun]", () => neptun.Text },
+                {"[points]", () => Points(pontok) },
+                {"[sum]", () => sum.ToString() },
+                {"[imsc]", () => imsc.ToString() },
+                {"[min_imsc]", () => feladat.imschatar.ToString() },
+                {"[grade]", () => jegyek[jegy-1] + $"({jegy})" },
+                {"[grade_point]", () => GradePoints() },
+            };
+
+            foreach (var item in mask)
+            {
+                minta = minta.Replace(item.Key, item.Value());
+            }
+
+
             MessageBox.Show(minta);
             Clipboard.SetText(minta);
+        }
+
+        private string Points(string[] pontok)
+        {
+            //1. {pontok[0]} / 0,5p  {ucs[0].Comment}
+            StringBuilder ret = new StringBuilder();
+
+            for (int i = 0; i < pontok.Length; i++)
+            {
+                ret.Append(i + 1).Append(". ").Append(pontok[i]).Append(" / ").Append(feladat[i].maxPoint).Append("p ");
+                if (feladat[i].plusz > 0)
+                    ret.Append("+ ").Append(feladat[i].plusz).Append("p ");
+                if (feladat[i].imsc > 0)
+                    ret.Append("+ (i)").Append(feladat[i].imsc).Append("p ");
+
+                ret.Append(ucs[i].Comment).AppendLine();
+            }
+
+            return ret.ToString();
+        }
+
+        private string GradePoints()
+        {
+            /*
+            double[] jegyhatar = new double[4]
+            {
+            3.01,4,5,6
+            };*/
+            //2: 3 <; 3: 4 <=; 4: 5 <=; 5: 6 <=
+            StringBuilder ret = new StringBuilder();
+
+            for (int i = 0; i < feladat.jegyhatar.Length; i++)
+            {
+                ret.Append(i + 2).Append(": ");
+                double hatar = Math.Round(feladat.jegyhatar[i], 1);
+                ret.Append(hatar).Append(" <").Append(hatar < feladat.jegyhatar[i] ? "" : "=").Append("; ");
+            }
+
+            return ret.ToString();
+
+
         }
 
         private void clearBtn_Click(object sender, EventArgs e)
@@ -173,12 +254,28 @@ A labordokumentációra {jegyek[jegy - 1]}({jegy}) jegyet adok.
 
         private void changePatternToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not implemented");
+            EditFeladat ef = new EditFeladat(feladat);
+            ef.Show();
+            ef.Result += Ef_FormClosed;
+        }
+
+        private void Ef_FormClosed(Feladat f)
+        {
+            feladat = f;
+            GenerateUCs();
+            Invalidate();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             Invalidate();
+        }
+
+        private void CreateMinta()
+        {
+            StreamWriter sw = new StreamWriter("minta.txt");
+            sw.Write("Neptun: [neptun]\r\n\r\n[points]\r\n\r\nÖsszesen: [sum]p\r\niMSc pont: [imsc]p\r\nAz iMSc pontokra jogosultság határa: [min_imsc]p az(i) (rész)feladatokon elért pontszám nélkül.\r\nA labordokumentációra [grade] jegyet adok.\r\n--\r\n[grade_point]");
+            sw.Close();
         }
 
     }

@@ -103,7 +103,7 @@
             this.Controls.Add(this.points);
             this.Controls.Add(this.sorszam);
             this.Name = "FeladatUC";
-            this.Size = new System.Drawing.Size(575, 32);
+            this.Size = new System.Drawing.Size(575, 30);
             this.ResumeLayout(false);
             this.PerformLayout();
 

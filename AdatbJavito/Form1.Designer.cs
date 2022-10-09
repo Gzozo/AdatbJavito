@@ -84,6 +84,7 @@
             // 
             // points
             // 
+            this.points.AutoScroll = true;
             this.points.Controls.Add(this.testfeladatuc);
             this.points.Location = new System.Drawing.Point(36, 108);
             this.points.Name = "points";

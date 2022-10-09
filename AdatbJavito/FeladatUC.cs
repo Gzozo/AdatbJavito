@@ -12,29 +12,30 @@ namespace AdatbJavito
 {
     public partial class FeladatUC : UserControl
     {
-        Form1.Feladat feladat = new Form1.Feladat(0, 0, 0);
+        Feladat._Feladat feladat = new Feladat._Feladat(0, 0, 0);
+        bool limit = false;
         public double Points
         {
             get
             {
-                double o;
-                return Math.Min(double.TryParse(points.Text, out o) ? o : 0, feladat.maxPoint);
+                double o = 0;
+                return Math.Min(double.TryParse(points.Text, out o) ? o : 0, limit ? o : feladat.maxPoint);
             }
         }
         public double Plusz
         {
             get
             {
-                double o;
-                return Math.Min(double.TryParse(plusz.Text, out o) ? o : 0, feladat.plusz);
+                double o = 0;
+                return Math.Min(double.TryParse(plusz.Text, out o) ? o : 0, limit ? o : feladat.plusz);
             }
         }
         public double Imsc
         {
             get
             {
-                double o;
-                return Math.Min(double.TryParse(imsc.Text, out o) ? o : 0, feladat.imsc);
+                double o = 0;
+                return Math.Min(double.TryParse(imsc.Text, out o) ? o : 0, limit ? o : feladat.imsc);
             }
         }
 
@@ -48,7 +49,7 @@ namespace AdatbJavito
 
         void InitFeladat()
         {
-            if (DesignMode)
+            if (DesignMode || limit)
             {
                 plusz.Visible = true;
                 imsc.Visible = true;
@@ -58,7 +59,7 @@ namespace AdatbJavito
             imsc.Visible = feladat.imsc != 0;
         }
 
-        public void SetFeladat(Form1.Feladat f, int sorszam = 0)
+        public void SetFeladat(Feladat._Feladat f, int sorszam = 0)
         {
             feladat = f;
             this.sorszam.Text = sorszam + ".feladat";
@@ -88,11 +89,25 @@ namespace AdatbJavito
 
         private void Textbox_DoubleClick(object sender, EventArgs e)
         {
+            if (limit)
+                return;
             if (sender is not TextBox)
                 return;
             TextBox text = (TextBox)sender;
             text.Text = text.Tag.ToString();
             check.Checked = Points == feladat.maxPoint && Plusz == feladat.plusz && Imsc == feladat.imsc;
+        }
+        public void SetLimit(bool limit = true)
+        {
+            this.limit = limit;
+            if (limit)
+            {
+                check.Checked = true;
+                check_CheckedChanged(null, null);
+                check.Visible = false;
+                comment.Visible = false;
+            }
+            InitFeladat();
         }
     }
 
