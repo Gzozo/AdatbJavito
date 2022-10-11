@@ -46,17 +46,9 @@ namespace AdatbJavito
             Load();
 
         }
-        public void Save()
+        protected Feladat(string dummy)
         {
-            StreamWriter sw = new StreamWriter("feladat.json");
-            sw.Write(JsonSerializer.Serialize(feladatok));
-            sw.Close();
-        }
-        public void Load()
-        {
-            StreamReader sr = new StreamReader("feladat.json");
-            feladatok = (_Feladat[])JsonSerializer.Deserialize(sr.BaseStream, typeof(_Feladat[]));
-            sr.Close();
+
         }
         public void Resize(int length)
         {
@@ -70,5 +62,31 @@ namespace AdatbJavito
                 }
             }
         }
+        public void Save()
+        {
+            Save(this);
+        }
+        public void Load()
+        {
+            FeladatData f = Load("feladat.json");
+            feladatok = f.feladatok;
+            imschatar = f.imschatar;
+            jegyhatar = f.jegyhatar;
+        }
+        void Save(Feladat f, string path = "feladat.json")
+        {
+            FeladatData fd = new FeladatData(f.feladatok, f.jegyhatar, f.imschatar);
+            StreamWriter sw = new StreamWriter(path);
+            sw.Write(JsonSerializer.Serialize(fd));
+            sw.Close();
+        }
+        FeladatData Load(string path)
+        {
+            using (StreamReader sr = new StreamReader(path))
+            {
+                return (FeladatData)JsonSerializer.Deserialize(sr.BaseStream, typeof(FeladatData));
+            }
+        }
+        record FeladatData(_Feladat[] feladatok, double[] jegyhatar, double imschatar) { }
     }
 }

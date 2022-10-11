@@ -49,7 +49,7 @@ namespace AdatbJavito
 
         void InitFeladat()
         {
-            if (DesignMode || limit)
+            if (DesignMode || IsAncestorSiteInDesignMode || limit)
             {
                 plusz.Visible = true;
                 imsc.Visible = true;

@@ -95,7 +95,7 @@
             // 
             this.testfeladatuc.Location = new System.Drawing.Point(16, 12);
             this.testfeladatuc.Name = "testfeladatuc";
-            this.testfeladatuc.Size = new System.Drawing.Size(247, 33);
+            this.testfeladatuc.Size = new System.Drawing.Size(573, 33);
             this.testfeladatuc.TabIndex = 5;
             // 
             // button1
