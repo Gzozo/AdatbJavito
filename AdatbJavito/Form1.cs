@@ -150,7 +150,7 @@ namespace AdatbJavito
             }
             while (jegy < 5 && feladat.jegyhatar[jegy - 1] <= sum)
                 jegy++;
-            if (sum < feladat.imschatar)
+            if (sum - imsc < feladat.imschatar)
                 imsc = 0;
             else if (imsc > 0)
             {
