@@ -47,6 +47,8 @@ namespace AdatbJavito
             jegyHatar3.Points = f.jegyhatar[1];
             jegyHatar4.Points = f.jegyhatar[2];
             jegyHatar5.Points = f.jegyhatar[3];
+
+            jegyHatarImsc.Points = f.imschatar;
         }
 
         private void FeladatSzam_ValueChanged(object sender, EventArgs e)
