@@ -22,8 +22,8 @@ namespace AdatbJavito
         {
             this.f = f;
             InitializeComponent();
-            FeladatSzam.Value = f.Length;
             LoadComponents();
+            FeladatSzam.Value = f.Length;
         }
 
         private void LoadComponents()
@@ -53,11 +53,20 @@ namespace AdatbJavito
 
         private void FeladatSzam_ValueChanged(object sender, EventArgs e)
         {
+            SaveChangesToFeladat();
             f.Resize(Convert.ToInt32(FeladatSzam.Value));
             LoadComponents();
         }
 
         private void EditFeladat_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveChangesToFeladat();
+
+            f.Save();
+            Result?.Invoke(f);
+        }
+
+        private void SaveChangesToFeladat()
         {
             for (int i = 0; i < f.Length; i++)
             {
@@ -70,9 +79,6 @@ namespace AdatbJavito
             f.jegyhatar[3] = jegyHatar5.Points;
 
             f.imschatar = jegyHatarImsc.Points;
-
-            f.Save();
-            Result?.Invoke(f);
         }
     }
 }
