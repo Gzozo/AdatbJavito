@@ -84,7 +84,14 @@ namespace AdatbJavito
         {
             using (StreamReader sr = new StreamReader(path))
             {
-                return (FeladatData)JsonSerializer.Deserialize(sr.BaseStream, typeof(FeladatData));
+                try
+                {
+                    return (FeladatData)JsonSerializer.Deserialize(sr.BaseStream, typeof(FeladatData));
+                }
+                catch
+                {
+                    return new FeladatData(feladatok, jegyhatar, imschatar);
+                }
             }
         }
         record FeladatData(_Feladat[] feladatok, double[] jegyhatar, double imschatar) { }
