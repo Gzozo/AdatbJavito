@@ -9,7 +9,7 @@ namespace AdatbJavito
 {
     public class Feladat
     {
-        public record _Feladat(double maxPoint, double imsc, double plusz) { }
+        public record _Feladat(double point, double imsc, double plusz) { }
 
         public _Feladat[] feladatok = new _Feladat[]
         {
@@ -28,6 +28,7 @@ namespace AdatbJavito
         public double imschatar = 10;
 
         public int Length => feladatok.Length;
+        public double Max => feladatok.Sum(x => x.point + x.imsc + x.plusz);
 
         public _Feladat this[int i]
         {

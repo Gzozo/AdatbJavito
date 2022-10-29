@@ -19,7 +19,7 @@ namespace AdatbJavito
             get
             {
                 double o = 0;
-                return Math.Min(double.TryParse(points.Text, out o) ? o : 0, limit ? o : feladat.maxPoint);
+                return Math.Min(double.TryParse(points.Text, out o) ? o : 0, limit ? o : feladat.point);
             }
         }
         public double Plusz
@@ -63,7 +63,7 @@ namespace AdatbJavito
         {
             feladat = f;
             this.sorszam.Text = sorszam + ".feladat";
-            points.Tag = f.maxPoint;
+            points.Tag = f.point;
             plusz.Tag = f.plusz;
             imsc.Tag = f.imsc;
             InitFeladat();
@@ -73,7 +73,7 @@ namespace AdatbJavito
         {
             if (check.Checked)
             {
-                points.Text = feladat.maxPoint + "";
+                points.Text = feladat.point + "";
                 plusz.Text = feladat.plusz + "";
                 imsc.Text = feladat.imsc + "";
             }
@@ -95,7 +95,7 @@ namespace AdatbJavito
                 return;
             TextBox text = (TextBox)sender;
             text.Text = text.Tag.ToString();
-            check.Checked = Points == feladat.maxPoint && Plusz == feladat.plusz && Imsc == feladat.imsc;
+            check.Checked = Points == feladat.point && Plusz == feladat.plusz && Imsc == feladat.imsc;
         }
         public void SetLimit(bool limit = true)
         {

@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 
 namespace AdatbJavito
@@ -181,20 +182,25 @@ namespace AdatbJavito
             StreamReader sr = new StreamReader("minta.txt");
             string minta = sr.ReadToEnd();
 
-            Dictionary<string, Func<string>> mask = new Dictionary<string, Func<string>>()
+            Dictionary<string, MatchEvaluator> mask = new Dictionary<string, MatchEvaluator>()
             {
-                {"[neptun]", () => neptun.Text },
-                {"[points]", () => Points(pontok) },
-                {"[sum]", () => sum.ToString() },
-                {"[imsc]", () => imsc.ToString() },
-                {"[min_imsc]", () => feladat.imschatar.ToString() },
-                {"[grade]", () => jegyek[jegy-1] + $"({jegy})" },
-                {"[grade_point]", () => GradePoints() },
+                {"\\[neptun\\]", (match) => neptun.Text },
+                {"\\[points\\]", (match) => Points(pontok) },
+                {"\\[sum\\]", (match) => sum.ToString() },
+                {"\\[imsc\\]", (match) => imsc.ToString() },
+                {"\\[min_imsc\\]", (match) => feladat.imschatar.ToString() },
+                {"\\[grade\\]", (match) => jegyek[jegy-1] + $"({jegy})" },
+                {"\\[grade_point\\]", (match) => GradePoints() },
+                {"\\r?\\n?\\[good_job(?: (.+))?\\]", (match) =>
+                    sum == feladat.Max?
+                    ("\n"+(match.Groups.Count > 1 &&  match.Groups[1].Value != "" ? match.Groups[1].Value : "Szép munka"))
+                     :"" },
             };
 
             foreach (var item in mask)
             {
-                minta = minta.Replace(item.Key, item.Value());
+                //minta = minta.Replace(item.Key, item.Value());
+                minta = Regex.Replace(minta, item.Key, item.Value);
             }
 
 
@@ -209,7 +215,7 @@ namespace AdatbJavito
 
             for (int i = 0; i < pontok.Length; i++)
             {
-                ret.Append(i + 1).Append(". ").Append(pontok[i]).Append(" / ").Append(feladat[i].maxPoint).Append("p ");
+                ret.Append(i + 1).Append(". ").Append(pontok[i]).Append(" / ").Append(feladat[i].point).Append("p ");
                 if (feladat[i].plusz > 0)
                     ret.Append("+ ").Append(feladat[i].plusz).Append("p ");
                 if (feladat[i].imsc > 0)
@@ -274,7 +280,7 @@ namespace AdatbJavito
         private void CreateMinta()
         {
             StreamWriter sw = new StreamWriter("minta.txt");
-            sw.Write("Neptun: [neptun]\r\n\r\n[points]\r\n\r\nÖsszesen: [sum]p\r\niMSc pont: [imsc]p\r\nAz iMSc pontokra jogosultság határa: [min_imsc]p az(i) (rész)feladatokon elért pontszám nélkül.\r\nA labordokumentációra [grade] jegyet adok.\r\n--\r\n[grade_point]");
+            sw.Write("Neptun: [neptun]\r\n\r\n[points]\r\n\r\nÖsszesen: [sum]p\r\niMSc pont: [imsc]p\r\nAz iMSc pontokra jogosultság határa: [min_imsc]p az(i) (rész)feladatokon elért pontszám nélkül.\r\nA labordokumentációra [grade] jegyet adok.\r\n[good_job]\r\n--\r\n[grade_point]");
             sw.Close();
         }
 
