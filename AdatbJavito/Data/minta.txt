@@ -4,7 +4,7 @@ Neptun: [neptun]
 
 Összesen: [sum]p
 iMSc pont: [imsc]p
-Az iMSc pontokra jogosultság határa: [min_imsc]p az(i) (rész)feladatokon elért pontszám nélkül.
+Az iMSc pontokra jogosultság határa: [min_imsc]p az (i) (rész)feladatokon elért pontszám nélkül.
 A labordokumentációra [grade] jegyet adok.
 [good_job]
 --

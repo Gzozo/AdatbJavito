@@ -28,51 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.point = new System.Windows.Forms.TextBox();
-            this.grade = new System.Windows.Forms.Label();
-            this.inclusive = new System.Windows.Forms.CheckBox();
-            this.SuspendLayout();
+            point = new TextBox();
+            grade = new Label();
+            inclusive = new CheckBox();
+            SuspendLayout();
             // 
             // point
             // 
-            this.point.Location = new System.Drawing.Point(47, 2);
-            this.point.Name = "point";
-            this.point.Size = new System.Drawing.Size(33, 23);
-            this.point.TabIndex = 0;
+            point.Location = new Point(47, 2);
+            point.Name = "point";
+            point.Size = new Size(33, 23);
+            point.TabIndex = 0;
+            point.TextChanged += _TextChanged;
             // 
             // grade
             // 
-            this.grade.AutoSize = true;
-            this.grade.Location = new System.Drawing.Point(3, 5);
-            this.grade.Name = "grade";
-            this.grade.Size = new System.Drawing.Size(16, 15);
-            this.grade.TabIndex = 1;
-            this.grade.Text = "1:";
+            grade.AutoSize = true;
+            grade.Location = new Point(3, 5);
+            grade.Name = "grade";
+            grade.Size = new Size(16, 15);
+            grade.TabIndex = 1;
+            grade.Text = "1:";
             // 
             // inclusive
             // 
-            this.inclusive.AutoSize = true;
-            this.inclusive.Location = new System.Drawing.Point(3, 31);
-            this.inclusive.Name = "inclusive";
-            this.inclusive.Size = new System.Drawing.Size(77, 19);
-            this.inclusive.TabIndex = 2;
-            this.inclusive.Text = "Inclusive?";
-            this.inclusive.UseVisualStyleBackColor = true;
+            inclusive.AutoSize = true;
+            inclusive.Location = new Point(3, 31);
+            inclusive.Name = "inclusive";
+            inclusive.Size = new Size(77, 19);
+            inclusive.TabIndex = 2;
+            inclusive.Text = "Inclusive?";
+            inclusive.UseVisualStyleBackColor = true;
+            inclusive.CheckedChanged += _TextChanged;
             // 
             // JegyHatar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Controls.Add(this.inclusive);
-            this.Controls.Add(this.grade);
-            this.Controls.Add(this.point);
-            this.Name = "JegyHatar";
-            this.Size = new System.Drawing.Size(83, 53);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            Controls.Add(inclusive);
+            Controls.Add(grade);
+            Controls.Add(point);
+            Name = "JegyHatar";
+            Size = new Size(83, 53);
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

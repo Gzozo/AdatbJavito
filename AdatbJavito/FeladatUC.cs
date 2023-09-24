@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,12 +15,13 @@ namespace AdatbJavito
     {
         Feladat._Feladat feladat = new Feladat._Feladat(0, 0, 0);
         bool limit = false;
+        public Action? OnChanged;
         public double Points
         {
             get
             {
                 double o = 0;
-                return Math.Min(double.TryParse(points.Text, out o) ? o : 0, limit ? o : feladat.point);
+                return Math.Min(double.TryParse(points.Text.Replace(',', '.'), NumberStyles.Any, CultureInfo.InvariantCulture, out o) ? o : 0, limit ? o : feladat.point);
             }
         }
         public double Plusz
@@ -27,7 +29,7 @@ namespace AdatbJavito
             get
             {
                 double o = 0;
-                return Math.Min(double.TryParse(plusz.Text, out o) ? o : 0, limit ? o : feladat.plusz);
+                return Math.Min(double.TryParse(plusz.Text.Replace(',', '.'), NumberStyles.Any, CultureInfo.InvariantCulture, out o) ? o : 0, limit ? o : feladat.plusz);
             }
         }
         public double Imsc
@@ -40,6 +42,7 @@ namespace AdatbJavito
         }
 
         public string Comment { get => comment.Text; }
+        public bool Loading = true;
 
         public FeladatUC()
         {
@@ -108,6 +111,12 @@ namespace AdatbJavito
                 comment.Visible = false;
             }
             InitFeladat();
+        }
+
+        private void _TextChanged(object sender, EventArgs e)
+        {
+            if (!Loading)
+                OnChanged?.Invoke();
         }
     }
 

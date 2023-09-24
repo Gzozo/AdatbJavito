@@ -33,10 +33,21 @@ namespace AdatbJavito
                 this.point.Text = point.ToString();
             }
         }
+
+
+        [Category("MyCategory")]
+        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public event Action? OnChanged;
         public JegyHatar()
         {
             InitializeComponent();
             Points = 0;
+        }
+
+        private void _TextChanged(object sender, EventArgs e)
+        {
+            OnChanged?.Invoke();
         }
     }
 }

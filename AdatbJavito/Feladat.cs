@@ -30,6 +30,9 @@ namespace AdatbJavito
         public int Length => feladatok.Length;
         public double Max => feladatok.Sum(x => x.point + x.imsc + x.plusz);
 
+        public string Name;
+        private string path;
+
         public _Feladat this[int i]
         {
             get => feladatok[i];
@@ -37,18 +40,16 @@ namespace AdatbJavito
         }
 
 
-        public Feladat()
+        public Feladat(string path = "Data/feladat.json", string name = "Custom")
         {
-            if (!File.Exists("feladat.json"))
+            Name = name;
+            this.path = path;
+            if (!File.Exists(path))
             {
                 //MessageBox.Show(JsonSerializer.Serialize(feladatok));
                 Save();
             }
-            Load();
-
-        }
-        protected Feladat(string dummy)
-        {
+            Load(path);
 
         }
         public void Resize(int length)
@@ -65,36 +66,37 @@ namespace AdatbJavito
         }
         public void Save()
         {
-            Save(this);
+            Save(this, path);
         }
-        public void Load()
+        public void Load(string path)
         {
-            FeladatData f = Load("feladat.json");
+            FeladatData f = LoadData(path);
             feladatok = f.feladatok;
             imschatar = f.imschatar;
             jegyhatar = f.jegyhatar;
+            Name = f.name;
         }
-        void Save(Feladat f, string path = "feladat.json")
+        private void Save(Feladat f, string path)
         {
-            FeladatData fd = new FeladatData(f.feladatok, f.jegyhatar, f.imschatar);
+            FeladatData fd = new FeladatData(f.feladatok, f.jegyhatar, f.imschatar, f.Name);
             StreamWriter sw = new StreamWriter(path);
             sw.Write(JsonSerializer.Serialize(fd));
             sw.Close();
         }
-        FeladatData Load(string path)
+        FeladatData LoadData(string path)
         {
             using (StreamReader sr = new StreamReader(path))
             {
                 try
                 {
-                    return (FeladatData)JsonSerializer.Deserialize(sr.BaseStream, typeof(FeladatData));
+                    return JsonSerializer.Deserialize(sr.BaseStream, typeof(FeladatData)) as FeladatData;
                 }
                 catch
                 {
-                    return new FeladatData(feladatok, jegyhatar, imschatar);
+                    return new FeladatData(feladatok, jegyhatar, imschatar, Name);
                 }
             }
         }
-        record FeladatData(_Feladat[] feladatok, double[] jegyhatar, double imschatar) { }
+        record FeladatData(_Feladat[] feladatok, double[] jegyhatar, double imschatar, string name) { }
     }
 }

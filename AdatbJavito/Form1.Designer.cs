@@ -28,121 +28,117 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changePatternToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.neptun = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.points = new System.Windows.Forms.Panel();
-            this.testfeladatuc = new AdatbJavito.FeladatUC();
-            this.button1 = new System.Windows.Forms.Button();
-            this.clearBtn = new System.Windows.Forms.Button();
-            this.menuStrip1.SuspendLayout();
-            this.points.SuspendLayout();
-            this.SuspendLayout();
+            menuStrip1 = new MenuStrip();
+            editToolStripMenuItem = new ToolStripMenuItem();
+            changePatternToolStripMenuItem = new ToolStripMenuItem();
+            neptun = new TextBox();
+            label1 = new Label();
+            points = new Panel();
+            testfeladatuc = new FeladatUC();
+            button1 = new Button();
+            clearBtn = new Button();
+            menuStrip1.SuspendLayout();
+            points.SuspendLayout();
+            SuspendLayout();
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(799, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            menuStrip1.Items.AddRange(new ToolStripItem[] { editToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(799, 24);
+            menuStrip1.TabIndex = 0;
+            menuStrip1.Text = "menuStrip1";
             // 
             // editToolStripMenuItem
             // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.changePatternToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "Edit";
+            editToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { changePatternToolStripMenuItem });
+            editToolStripMenuItem.Name = "editToolStripMenuItem";
+            editToolStripMenuItem.Size = new Size(39, 20);
+            editToolStripMenuItem.Text = "Edit";
             // 
             // changePatternToolStripMenuItem
             // 
-            this.changePatternToolStripMenuItem.Name = "changePatternToolStripMenuItem";
-            this.changePatternToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.changePatternToolStripMenuItem.Text = "Change Pattern";
-            this.changePatternToolStripMenuItem.Click += new System.EventHandler(this.changePatternToolStripMenuItem_Click);
+            changePatternToolStripMenuItem.Name = "changePatternToolStripMenuItem";
+            changePatternToolStripMenuItem.Size = new Size(156, 22);
+            changePatternToolStripMenuItem.Text = "Change Pattern";
+            changePatternToolStripMenuItem.Click += changePatternToolStripMenuItem_Click;
             // 
             // neptun
             // 
-            this.neptun.Location = new System.Drawing.Point(92, 53);
-            this.neptun.Name = "neptun";
-            this.neptun.Size = new System.Drawing.Size(100, 23);
-            this.neptun.TabIndex = 1;
+            neptun.Location = new Point(92, 53);
+            neptun.Name = "neptun";
+            neptun.Size = new Size(100, 23);
+            neptun.TabIndex = 1;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 56);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 15);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Neptun:";
+            label1.AutoSize = true;
+            label1.Location = new Point(36, 56);
+            label1.Name = "label1";
+            label1.Size = new Size(50, 15);
+            label1.TabIndex = 2;
+            label1.Text = "Neptun:";
             // 
             // points
             // 
-            this.points.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.points.AutoScroll = true;
-            this.points.Controls.Add(this.testfeladatuc);
-            this.points.Location = new System.Drawing.Point(36, 108);
-            this.points.Name = "points";
-            this.points.Size = new System.Drawing.Size(592, 254);
-            this.points.TabIndex = 3;
+            points.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            points.AutoScroll = true;
+            points.Controls.Add(testfeladatuc);
+            points.Location = new Point(36, 108);
+            points.Name = "points";
+            points.Size = new Size(592, 254);
+            points.TabIndex = 3;
             // 
             // testfeladatuc
             // 
-            this.testfeladatuc.Location = new System.Drawing.Point(16, 12);
-            this.testfeladatuc.Name = "testfeladatuc";
-            this.testfeladatuc.Size = new System.Drawing.Size(573, 33);
-            this.testfeladatuc.TabIndex = 5;
+            testfeladatuc.Location = new Point(16, 12);
+            testfeladatuc.Name = "testfeladatuc";
+            testfeladatuc.Size = new Size(573, 33);
+            testfeladatuc.TabIndex = 5;
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(495, 397);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Export";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            button1.Location = new Point(495, 397);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 4;
+            button1.Text = "Export";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // clearBtn
             // 
-            this.clearBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.clearBtn.Location = new System.Drawing.Point(414, 397);
-            this.clearBtn.Name = "clearBtn";
-            this.clearBtn.Size = new System.Drawing.Size(75, 23);
-            this.clearBtn.TabIndex = 5;
-            this.clearBtn.Text = "Clear";
-            this.clearBtn.UseVisualStyleBackColor = true;
-            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
+            clearBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            clearBtn.Location = new Point(414, 397);
+            clearBtn.Name = "clearBtn";
+            clearBtn.Size = new Size(75, 23);
+            clearBtn.TabIndex = 5;
+            clearBtn.Text = "Clear";
+            clearBtn.UseVisualStyleBackColor = true;
+            clearBtn.Click += clearBtn_Click;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 463);
-            this.Controls.Add(this.clearBtn);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.points);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.neptun);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
-            this.Text = "Adatb Javító v0.2 internal build not for public use paid version";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.points.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(799, 463);
+            Controls.Add(clearBtn);
+            Controls.Add(button1);
+            Controls.Add(points);
+            Controls.Add(label1);
+            Controls.Add(neptun);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
+            Name = "Form1";
+            Text = "Adatb Javító v0.3 internal build not for public use paid version";
+            Load += Form1_Load;
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            points.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

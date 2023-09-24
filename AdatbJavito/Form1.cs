@@ -23,7 +23,7 @@ namespace AdatbJavito
         {
             InitializeComponent();
 
-            if (!File.Exists("minta.txt"))
+            if (!File.Exists("Data/minta.txt"))
                 CreateMinta();
 
 
@@ -179,8 +179,9 @@ namespace AdatbJavito
  A labordokumentációra {jegyek[jegy - 1]}({jegy}) jegyet adok.
  --
  2: 3 <; 3: 4 <=; 4: 5 <=; 5: 6 <= ";*/
-            StreamReader sr = new StreamReader("minta.txt");
+            StreamReader sr = new StreamReader("Data/minta.txt");
             string minta = sr.ReadToEnd();
+            sr.Close();
 
             Dictionary<string, MatchEvaluator> mask = new Dictionary<string, MatchEvaluator>()
             {
@@ -279,7 +280,7 @@ namespace AdatbJavito
 
         private void CreateMinta()
         {
-            StreamWriter sw = new StreamWriter("minta.txt");
+            StreamWriter sw = new StreamWriter("Data/minta.txt");
             sw.Write("Neptun: [neptun]\r\n\r\n[points]\r\n\r\nÖsszesen: [sum]p\r\niMSc pont: [imsc]p\r\nAz iMSc pontokra jogosultság határa: [min_imsc]p az(i) (rész)feladatokon elért pontszám nélkül.\r\nA labordokumentációra [grade] jegyet adok.\r\n[good_job]\r\n--\r\n[grade_point]");
             sw.Close();
         }

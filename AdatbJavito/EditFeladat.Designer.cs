@@ -28,118 +28,138 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.FeladatSzam = new System.Windows.Forms.NumericUpDown();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.testfeladatuc = new AdatbJavito.FeladatUC();
-            this.jegyHatar2 = new AdatbJavito.JegyHatar();
-            this.jegyHatar3 = new AdatbJavito.JegyHatar();
-            this.jegyHatar4 = new AdatbJavito.JegyHatar();
-            this.jegyHatar5 = new AdatbJavito.JegyHatar();
-            this.jegyHatarImsc = new AdatbJavito.JegyHatar();
-            ((System.ComponentModel.ISupportInitialize)(this.FeladatSzam)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
+            FeladatSzam = new NumericUpDown();
+            panel1 = new Panel();
+            testfeladatuc = new FeladatUC();
+            jegyHatar2 = new JegyHatar();
+            jegyHatar3 = new JegyHatar();
+            jegyHatar4 = new JegyHatar();
+            jegyHatar5 = new JegyHatar();
+            jegyHatarImsc = new JegyHatar();
+            samplesComboBox = new ComboBox();
+            label1 = new Label();
+            ((System.ComponentModel.ISupportInitialize)FeladatSzam).BeginInit();
+            panel1.SuspendLayout();
+            SuspendLayout();
             // 
             // FeladatSzam
             // 
-            this.FeladatSzam.Location = new System.Drawing.Point(128, 37);
-            this.FeladatSzam.Name = "FeladatSzam";
-            this.FeladatSzam.Size = new System.Drawing.Size(39, 23);
-            this.FeladatSzam.TabIndex = 0;
-            this.FeladatSzam.ValueChanged += new System.EventHandler(this.FeladatSzam_ValueChanged);
+            FeladatSzam.Location = new Point(602, 99);
+            FeladatSzam.Name = "FeladatSzam";
+            FeladatSzam.Size = new Size(39, 23);
+            FeladatSzam.TabIndex = 0;
             // 
             // panel1
             // 
-            this.panel1.AutoSize = true;
-            this.panel1.Controls.Add(this.testfeladatuc);
-            this.panel1.Location = new System.Drawing.Point(12, 96);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(584, 342);
-            this.panel1.TabIndex = 1;
+            panel1.AutoSize = true;
+            panel1.Controls.Add(testfeladatuc);
+            panel1.Location = new Point(12, 96);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(584, 342);
+            panel1.TabIndex = 1;
             // 
             // testfeladatuc
             // 
-            this.testfeladatuc.Location = new System.Drawing.Point(6, 3);
-            this.testfeladatuc.Name = "testfeladatuc";
-            this.testfeladatuc.Size = new System.Drawing.Size(575, 32);
-            this.testfeladatuc.TabIndex = 0;
+            testfeladatuc.Location = new Point(6, 3);
+            testfeladatuc.Name = "testfeladatuc";
+            testfeladatuc.Size = new Size(575, 32);
+            testfeladatuc.TabIndex = 0;
             // 
             // jegyHatar2
             // 
-            this.jegyHatar2.AutoSize = true;
-            this.jegyHatar2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.jegyHatar2.Grade = "2";
-            this.jegyHatar2.Location = new System.Drawing.Point(218, 25);
-            this.jegyHatar2.Name = "jegyHatar2";
-            this.jegyHatar2.Points = 0.11D;
-            this.jegyHatar2.Size = new System.Drawing.Size(83, 53);
-            this.jegyHatar2.TabIndex = 2;
+            jegyHatar2.AutoSize = true;
+            jegyHatar2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            jegyHatar2.Grade = "2";
+            jegyHatar2.Location = new Point(218, 25);
+            jegyHatar2.Name = "jegyHatar2";
+            jegyHatar2.Points = 0.11D;
+            jegyHatar2.Size = new Size(83, 53);
+            jegyHatar2.TabIndex = 2;
             // 
             // jegyHatar3
             // 
-            this.jegyHatar3.AutoSize = true;
-            this.jegyHatar3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.jegyHatar3.Grade = "3";
-            this.jegyHatar3.Location = new System.Drawing.Point(307, 25);
-            this.jegyHatar3.Name = "jegyHatar3";
-            this.jegyHatar3.Points = 0.1D;
-            this.jegyHatar3.Size = new System.Drawing.Size(83, 53);
-            this.jegyHatar3.TabIndex = 2;
+            jegyHatar3.AutoSize = true;
+            jegyHatar3.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            jegyHatar3.Grade = "3";
+            jegyHatar3.Location = new Point(307, 25);
+            jegyHatar3.Name = "jegyHatar3";
+            jegyHatar3.Points = 0.1D;
+            jegyHatar3.Size = new Size(83, 53);
+            jegyHatar3.TabIndex = 2;
             // 
             // jegyHatar4
             // 
-            this.jegyHatar4.AutoSize = true;
-            this.jegyHatar4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.jegyHatar4.Grade = "4";
-            this.jegyHatar4.Location = new System.Drawing.Point(396, 25);
-            this.jegyHatar4.Name = "jegyHatar4";
-            this.jegyHatar4.Points = 0D;
-            this.jegyHatar4.Size = new System.Drawing.Size(83, 53);
-            this.jegyHatar4.TabIndex = 2;
+            jegyHatar4.AutoSize = true;
+            jegyHatar4.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            jegyHatar4.Grade = "4";
+            jegyHatar4.Location = new Point(396, 25);
+            jegyHatar4.Name = "jegyHatar4";
+            jegyHatar4.Points = 0D;
+            jegyHatar4.Size = new Size(83, 53);
+            jegyHatar4.TabIndex = 2;
             // 
             // jegyHatar5
             // 
-            this.jegyHatar5.AutoSize = true;
-            this.jegyHatar5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.jegyHatar5.Grade = "5";
-            this.jegyHatar5.Location = new System.Drawing.Point(485, 25);
-            this.jegyHatar5.Name = "jegyHatar5";
-            this.jegyHatar5.Points = 10D;
-            this.jegyHatar5.Size = new System.Drawing.Size(83, 53);
-            this.jegyHatar5.TabIndex = 2;
+            jegyHatar5.AutoSize = true;
+            jegyHatar5.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            jegyHatar5.Grade = "5";
+            jegyHatar5.Location = new Point(485, 25);
+            jegyHatar5.Name = "jegyHatar5";
+            jegyHatar5.Points = 10D;
+            jegyHatar5.Size = new Size(83, 53);
+            jegyHatar5.TabIndex = 2;
             // 
             // jegyHatarImsc
             // 
-            this.jegyHatarImsc.AutoSize = true;
-            this.jegyHatarImsc.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.jegyHatarImsc.Grade = "Imsc";
-            this.jegyHatarImsc.Location = new System.Drawing.Point(574, 25);
-            this.jegyHatarImsc.Name = "jegyHatarImsc";
-            this.jegyHatarImsc.Points = 10D;
-            this.jegyHatarImsc.Size = new System.Drawing.Size(83, 53);
-            this.jegyHatarImsc.TabIndex = 2;
+            jegyHatarImsc.AutoSize = true;
+            jegyHatarImsc.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            jegyHatarImsc.Grade = "Imsc";
+            jegyHatarImsc.Location = new Point(574, 25);
+            jegyHatarImsc.Name = "jegyHatarImsc";
+            jegyHatarImsc.Points = 10D;
+            jegyHatarImsc.Size = new Size(83, 53);
+            jegyHatarImsc.TabIndex = 2;
+            // 
+            // samplesComboBox
+            // 
+            samplesComboBox.FormattingEnabled = true;
+            samplesComboBox.Location = new Point(91, 38);
+            samplesComboBox.Name = "samplesComboBox";
+            samplesComboBox.Size = new Size(121, 23);
+            samplesComboBox.TabIndex = 3;
+            samplesComboBox.SelectedIndexChanged += samplesComboBox_SelectedIndexChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(28, 41);
+            label1.Name = "label1";
+            label1.Size = new Size(57, 15);
+            label1.TabIndex = 4;
+            label1.Text = "Samples: ";
             // 
             // EditFeladat
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(690, 450);
-            this.Controls.Add(this.jegyHatarImsc);
-            this.Controls.Add(this.jegyHatar5);
-            this.Controls.Add(this.jegyHatar4);
-            this.Controls.Add(this.jegyHatar3);
-            this.Controls.Add(this.jegyHatar2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.FeladatSzam);
-            this.DoubleBuffered = true;
-            this.Name = "EditFeladat";
-            this.Text = "EditFeladat";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditFeladat_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.FeladatSzam)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(690, 450);
+            Controls.Add(label1);
+            Controls.Add(samplesComboBox);
+            Controls.Add(jegyHatarImsc);
+            Controls.Add(jegyHatar5);
+            Controls.Add(jegyHatar4);
+            Controls.Add(jegyHatar3);
+            Controls.Add(jegyHatar2);
+            Controls.Add(panel1);
+            Controls.Add(FeladatSzam);
+            DoubleBuffered = true;
+            Name = "EditFeladat";
+            Text = "EditFeladat";
+            FormClosing += EditFeladat_FormClosing;
+            ((System.ComponentModel.ISupportInitialize)FeladatSzam).EndInit();
+            panel1.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -152,5 +172,7 @@
         private JegyHatar jegyHatar4;
         private JegyHatar jegyHatar5;
         private JegyHatar jegyHatarImsc;
+        private ComboBox samplesComboBox;
+        private Label label1;
     }
 }
